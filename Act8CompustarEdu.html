@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Compu-Star - Productos</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #393E46;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Redhands', sans-serif;
+        }
+        
+        header {
+            border: 2px solid black;
+            border-radius: 10px;
+            background: linear-gradient(to right, #332D56, #0E2148, #4E6688, #547792, #27548A);
+            color: floralwhite;
+            font-size: 6.5em;
+            font-family: 'Dimitri', sans-serif;
+            text-align: center;
+            text-shadow: 5px 5px 5px black;
+            box-shadow: 5px 5px 5px black;
+            margin: 10px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        header img {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 60%;
+            object-fit: cover;
+        }
+        
+        nav {
+            background-color: #0E2148;
+            padding: 10px 0;
+            border-radius: 10px;
+            margin: 10px;
+        }
+        .nav {
+            width: 99%;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+        }
+        .nav li {
+            position: relative;
+        }
+        .nav li a {
+            color: whitesmoke;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 9px;
+            transition: background-color 0.3s;
+            font-family: 'Conthrax', sans-serif;
+            font-size: 1.2em;
+        }
+        .nav li a:hover {
+            background-color: #333446;
+        }
+        .nav li ul {
+            display: none;
+            position: absolute;
+            background-color: #0E2148;
+            border-radius: 0 0 9px 9px;
+            min-width: 140px;
+            top: 100%;
+            left: 0;
+            z-index: 1;
+        }
+        .nav li:hover > ul {
+            display: block;
+        }
+        .nav li ul li {
+            padding: 5px 0;
+        }
+        
+        .productos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+        .producto {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #ddd;
+        }
+        .producto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .producto-imagen {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        .producto-info {
+            padding: 20px;
+        }
+        .producto-nombre {
+            font-family: 'Conthrax', sans-serif;
+            font-size: 1.3em;
+            color: #0E2148;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .producto-precio {
+            font-family: 'Redhands', sans-serif;
+            font-size: 1.5em;
+            color: #27548A;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .producto-desc {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .producto-boton {
+            display: inline-block;
+            background-color: #0E2148;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: 'Conthrax', sans-serif;
+            transition: background-color 0.3s;
+        }
+        .producto-boton:hover {
+            background-color: #27548A;
+        }
+        
+        main {
+            flex: 1;
+            padding: 20px;
+            margin: 10px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        section {
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-family: 'Flasty', sans-serif;
+            color: #16404D;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 700;
+
+        }
+        p {
+			font-family: 'Redhands', sans-serif;
+			font-size: 20px;
+			margin-bottom: 10px;
+			line-height: 1.5;
+		}
+		.center-image {
+			display: block;
+    		margin-left: auto;
+    		margin-right: auto;
+    		height: 300px;
+    		width: 340px;
+		}
+        footer {
+            font-family: Arial, sans-serif;
+            background-color: #0E2148;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+            border-radius: 10px;
+            margin: 10px;
+        }
+        
+        .oferta {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #E74C3C;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-family: 'Conthrax', sans-serif;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <header>Compu-Star<img src="img/logo1.jpeg" alt="Logo Compu-Star"></header>
+    
+    <nav>
+        <ul class="nav">
+            <li><a href="#start">Home</a>
+                <ul>
+                    <li><a href="#Vision">Vision</a></li>
+                    <li><a href="#Mision">Mission</a></li>
+                </ul>
+            </li>
+            <li><a href="#productos">Products</a>
+                <ul>
+                    <li><a href="#productos">The best of the season</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Services</a>
+                <ul>
+                    <li><a href="https://compudiagnosis.com/">Repair</a></li>
+                    <li><a href="https://intelite.gt/servicio-tecnico/">Maintenance</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contacts</a>
+                <ul>
+                    <li><a href="https://mail.google.com/mail/u/0/#inbox">Email</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+    	<section>
+			<h2>Oh, hello! Nice to meet you!</h2>
+			<p class="center-text" style="text-align: justify;">Welcome to Compu-Star, a company dedicated to the design and marketing of high-quality smart devices at prices that will fill your wallet.It was founded in 2023 by Edlee Chen's, with big ideas in mind accompanied by a conscious heart for your effort in purchasing our devices</p>
+		</section>
+
+		<section id="Vision">
+			<h2>Vision</h2>
+			<p class="center-text" style="text-align: justify;">We are ambitious for you. We work to be the most reliable company for your preference and, without a doubt, an imposing brand in the labor market, generating more demand just to keep you happy with our excellence.</p>
+			<p class="center-text">We share with you some of our specific objectives: </p>
+			<ul class="center-text">
+				<li>Guaranteed quality</li>
+				<li>Competitive prices</li>
+				<li>Constant innovation</li>
+			</ul>
+		</section>
+		<img src="https://yefacom.com/wp-content/uploads/2016/10/vision-300x300.png" class="center-image" alt="Imagen de visión">
+
+		<section id="Mision">
+			<h2>Mission</h2>
+			<p class="center-text">The reason Edlee Chen's started all stems from the need to get your money's worth when purchasing smart products. We work to ensure you have the best experience using what we offer, using three aspects: Beautiful, good, and cheap.</p>
+			<p class="center-text">Here are some of our goals:</p>
+			<ul class="center-text">
+				<li>Customer satisfaction</li>
+				<li>Accessible products</li>
+				<li>Innovative design</li>
+			</ul>
+		</section>
+		<img src="https://www.vhv.rs/dpng/f/552-5526296_mision-png.png" class="center-image" alt="Imagen de visión">
+		----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        <section id="productos">
+            <h2>Our featured products</h2>
+            <div class="productos-container">
+                <!-- Producto 1 -->
+                <div class="producto">
+                    <span class="oferta">OFFER</span>
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_819465-MLU73421925735_122023-O.webp" alt="Mouse Gamer X200" class="producto-imagen">
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">Mouse Gamer X200</h3>
+                        <p class="producto-precio">Q29.99 <small style="color:#777; font-size:0.7em;">(VAT included)</small></p>
+                        <p class="producto-desc">Ergonomic mouse with 6 programmable buttons and high-precision 6400 DPI sensor.</p>
+                        <a href="https://images-na.ssl-images-amazon.com/images/I/51C7ic35hkS.jpg" class="producto-boton">Buy now</a>
+                    </div>
+                </div>
+                
+                <!-- Producto 2 -->
+                <div class="producto">
+                    <img src="https://th.bing.com/th/id/R.1c925fd3911a9eeeaf341ee401373cbc?rik=S146frK22gZPrg&riu=http%3a%2f%2f5.imimg.com%2fdata5%2fSELLER%2fDefault%2f2023%2f9%2f347206506%2fSQ%2fBA%2fUZ%2f147363254%2fmechanical-rgb-keyboard-1000x1000.jpg&ehk=qJPa2%2bA6pDLsZMdCHVAC3qKPQlrTWNSrYf2CBYbRRSs%3d&risl=&pid=ImgRaw&r=0" alt="Teclado Mecánico RGB" class="producto-imagen">
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">RGB Pro Mechanical Keyboard</h3>
+                        <p class="producto-precio">Q59.99</p>
+                        <p class="producto-desc">Mechanical keyboard with Blue switches and customizable RGB backlighting.</p>
+                        <a href="https://th.bing.com/th/id/OIP.AqJql5boRA7U8lo8pcgvzgHaJQ?w=1200&h=1500&rs=1&pid=ImgDetMain" class="producto-boton">Buy now</a>
+                    </div>
+                </div>
+                
+                <!-- Producto 3 -->
+                <div class="producto">
+                    <span class="oferta">NEW</span>
+                    <img src="https://www.pccompu.com.uy/imgs/productos/productos34_48783.jpg" alt="CPU Gamer Pro" class="producto-imagen">
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">CPU Gamer Pro</h3>
+                        <p class="producto-precio">Q499.99</p>
+                        <p class="producto-desc">Powerful CPU with Intel i7 processor, 16GB RAM and RTX 3060 graphics card.</p>
+                        <a href="https://a.rimg.com.tw/s6/fdb/2d7/sunfar_3c/b/28/22322821184296_660.jpg" class="producto-boton">Buy now</a>
+                    </div>
+                </div>
+                
+                <!-- Producto 4 -->
+                <div class="producto">
+                    <img src="https://m.media-amazon.com/images/I/819iryw75iL.jpg" alt="Monitor Curvo 27"" class="producto-imagen">
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">Curved Monitor 27"</h3>
+                        <p class="producto-precio">Q249.99</p>
+                        <p class="producto-desc">Full HD curved monitor with 144Hz refresh rate and 1ms response time.</p>
+                        <a href="https://media.karousell.com/media/photos/products/2023/8/17/xiaomi_34_inch_surface_curved__1692277874_5075be44.jpg" class="producto-boton">Buy now</a>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="producto">
+                    <span class="oferta">OFFER</span>
+                    <img src="https://prophonechile.cl/wp-content/uploads/2022/01/H9baf2beb4ba3472593ba29299c557ed9e.jpeg" alt="Mouse Gamer X200" class="producto-imagen">
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">Web Camera Webcam Gamer Full Hd 1080p RGB Black</h3>
+                        <p class="producto-precio">Q75.99 <small style="color:#777; font-size:0.7em;"></small></p>
+                        <p class="producto-desc">It is a smart camera, it has a motion sensor and high lens resolution with AI support.</p>
+                        <a href="https://prophonechile.cl/wp-content/uploads/2022/01/Ha1e7b55c7c18476896d5fd65bcd35564K-600x600.jpeg" class="producto-boton">Buy now</a>
+                    </div>
+                </div>
+                
+                <!-- Producto 6 -->
+                <div class="producto">
+                    <img src="https://th.bing.com/th/id/OIP.gffjzZUalTlahHXHlVr0EQHaHu?rs=1&pid=ImgDetMain" alt="Teclado Mecánico RGB" class="producto-imagen">
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">Gamer Headphones Headband Ps4 Xbox One S Jack 3.5mm Pc Laptop</h3>
+                        <p class="producto-precio">Q130.50</p>
+                        <p class="producto-desc">A complete and economical product to enjoy, it has an intelligent in-line sound control focus for sound and microphone</p>
+                        <a href="https://oechsle.vteximg.com.br/arquivos/ids/18389674-800-800/imageUrl_1.jpg?v=638567047191700000" class="producto-boton">Buy now</a>
+                    </div>
+                </div>
+                
+                <!-- Producto 7 -->
+                <div class="producto">
+                    <span class="oferta">NEW</span>
+                    <img src="https://gamerinsighthub.com/wp-content/uploads/2024/03/gaming-chair.jpg" alt="CPU Gamer Pro" class="producto-imagen">
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">padded reclining gaming chair</h3>
+                        <p class="producto-precio">Q220.99</p>
+                        <p class="producto-desc">A beautiful and elegant seat, comfortable to enjoy while you are playing or working, it has a leather finish and cooled padding.</p>
+                        <a href="https://media.s-bol.com/B2XPZ5wEGWYW/mDQmDR/509x840.jpg" class="producto-boton">Buy now</a>
+                    </div>
+                </div>
+                
+                <!-- Producto 8 -->
+                <div class="producto">
+                    <img src="https://www.grupolimagars.com/wp-content/uploads/2023/05/Impresora-Epson-L5590-800x800.jpg" alt="Monitor Curvo 27"" class="producto-imagen">
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">EPSON L5590</h3>
+                        <p class="producto-precio">Q5000.00</p>
+                        <p class="producto-desc">Epson L5590 Ecotank Wireless Multifunction Printer with WiFi, Continuous Ink System from the factory, COPY, PRINT, SCAN, PRINT, WI-FI, ETHERNET</p>
+                        <a href="https://www.siscop.com.co/wp-content/uploads/2023/05/epson-l5590-2.png" class="producto-boton">Buy now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    
+    </main>
+
+    <footer>
+        <p>© 2023 Compu-Star. All rights reserved.</p>
+        <p>Contact: info@compu-star.com | Tel: 4401-8222</p>
+    </footer>
+</body>
+</html>
